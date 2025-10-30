@@ -1,0 +1,112 @@
+[gd_scene load_steps=7 format=3 uid="uid://drs02bjc5fsm"]
+
+[ext_resource type="Script" uid="uid://dwdoaqnaodg4y" path="res://Scenes/Inventory/inventory_ui.gd" id="1_afoyu"]
+[ext_resource type="Texture2D" uid="uid://bicbx401cukj4" path="res://Assets/InventoryBackground.png" id="2_a3clf"]
+[ext_resource type="Script" uid="uid://b5lw1sbi41ucf" path="res://Scenes/Inventory/Inventory.gd" id="2_jrgvc"]
+[ext_resource type="Script" uid="uid://g7mthhia1wlf" path="res://Scenes/Inventory/inv_slot.gd" id="3_0cyxv"]
+[ext_resource type="PackedScene" uid="uid://bjup88b1pmfg2" path="res://Scenes/Inventory/inventory_ui_slot.tscn" id="3_or0wv"]
+
+[sub_resource type="Resource" id="Resource_ggc2y"]
+script = ExtResource("2_jrgvc")
+slots = Array[ExtResource("3_0cyxv")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+metadata/_custom_type_script = "uid://b5lw1sbi41ucf"
+
+[node name="InventoryUI" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_left = 315.0
+offset_top = 156.0
+offset_right = 315.0
+offset_bottom = 156.0
+script = ExtResource("1_afoyu")
+inv = SubResource("Resource_ggc2y")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 570.0
+offset_bottom = 333.0
+texture = ExtResource("2_a3clf")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -163.0
+offset_top = -97.0
+offset_right = 163.0
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 6
+
+[node name="InventoryUISlot" parent="NinePatchRect/GridContainer" instance=ExtResource("3_or0wv")]
+layout_mode = 2
+
+[node name="InventoryUISlot2" parent="NinePatchRect/GridContainer" instance=ExtResource("3_or0wv")]
+layout_mode = 2
+
+[node name="InventoryUISlot3" parent="NinePatchRect/GridContainer" instance=ExtResource("3_or0wv")]
+layout_mode = 2
+
+[node name="InventoryUISlot4" parent="NinePatchRect/GridContainer" instance=ExtResource("3_or0wv")]
+layout_mode = 2
+
+[node name="InventoryUISlot5" parent="NinePatchRect/GridContainer" instance=ExtResource("3_or0wv")]
+layout_mode = 2
+
+[node name="InventoryUISlot6" parent="NinePatchRect/GridContainer" instance=ExtResource("3_or0wv")]
+layout_mode = 2
+
+[node name="InventoryUISlot7" parent="NinePatchRect/GridContainer" instance=ExtResource("3_or0wv")]
+layout_mode = 2
+
+[node name="InventoryUISlot8" parent="NinePatchRect/GridContainer" instance=ExtResource("3_or0wv")]
+layout_mode = 2
+
+[node name="InventoryUISlot9" parent="NinePatchRect/GridContainer" instance=ExtResource("3_or0wv")]
+layout_mode = 2
+
+[node name="InventoryUISlot10" parent="NinePatchRect/GridContainer" instance=ExtResource("3_or0wv")]
+layout_mode = 2
+
+[node name="InventoryUISlot11" parent="NinePatchRect/GridContainer" instance=ExtResource("3_or0wv")]
+layout_mode = 2
+
+[node name="InventoryUISlot12" parent="NinePatchRect/GridContainer" instance=ExtResource("3_or0wv")]
+layout_mode = 2
+
+[node name="InventoryUISlot13" parent="NinePatchRect/GridContainer" instance=ExtResource("3_or0wv")]
+layout_mode = 2
+
+[node name="InventoryUISlot14" parent="NinePatchRect/GridContainer" instance=ExtResource("3_or0wv")]
+layout_mode = 2
+
+[node name="InventoryUISlot15" parent="NinePatchRect/GridContainer" instance=ExtResource("3_or0wv")]
+layout_mode = 2
+
+[node name="InventoryUISlot16" parent="NinePatchRect/GridContainer" instance=ExtResource("3_or0wv")]
+layout_mode = 2
+
+[node name="InventoryUISlot17" parent="NinePatchRect/GridContainer" instance=ExtResource("3_or0wv")]
+layout_mode = 2
+
+[node name="InventoryUISlot18" parent="NinePatchRect/GridContainer" instance=ExtResource("3_or0wv")]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = -315.0
+offset_top = -156.0
+offset_right = -275.0
+offset_bottom = -116.0
+scale = Vector2(28.8, 16.2)
+color = Color(0, 0, 0, 0.517647)
