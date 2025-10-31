@@ -7,6 +7,7 @@
 
 [node name="InventoryUI" type="Control"]
 process_mode = 3
+z_index = 9
 layout_mode = 3
 anchors_preset = 0
 offset_left = 315.0
@@ -18,7 +19,8 @@ inv = ExtResource("2_s1kqi")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_right = 570.0
+offset_left = -41.0
+offset_right = 529.0
 offset_bottom = 333.0
 texture = ExtResource("2_a3clf")
 patch_margin_left = 1

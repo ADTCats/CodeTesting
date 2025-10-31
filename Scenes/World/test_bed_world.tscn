@@ -18,7 +18,7 @@ visible = false
 visible = false
 
 [node name="Player" parent="." instance=ExtResource("2_a86xc")]
-position = Vector2(298, 463)
+position = Vector2(736, 539)
 
 [node name="Newspaper" parent="." instance=ExtResource("4_apkbi")]
 position = Vector2(861, 512)
