@@ -8,6 +8,7 @@
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(3.32, 3.32)
+collision_mask = 3
 script = ExtResource("1_ojo44")
 inventory = ExtResource("2_801yk")
 

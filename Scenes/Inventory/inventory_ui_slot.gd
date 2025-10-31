@@ -2,6 +2,7 @@ extends Panel
 
 @onready var item_visual: Sprite2D = $CenterContainer/Panel/ItemDisplay
 var slot_data: InvSlot
+var slot_index: int = 0 
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_STOP
@@ -10,7 +11,6 @@ func _ready() -> void:
 
 func update(slot: InvSlot): 
 	slot_data = slot
-	
 	if slot == null:
 		item_visual.visible = false
 		return
@@ -41,5 +41,15 @@ func _input(event: InputEvent) -> void:
 				#_on_slot_clicked()
 
 func _on_slot_clicked():
-	print("Slot clicked! Item: ", slot_data.item.name)
-	SignalHub.emit_item_description(slot_data.item)
+	var inventory_ui = get_tree().get_first_node_in_group("InventoryUI")
+	
+	if inventory_ui == null:
+		print("ERROR: Can't find InventoryUI!")
+		return
+	
+	if inventory_ui.placement_mode:
+		print("Placement mode - trying to place item", slot_data.item.name)
+		inventory_ui.try_place_item(slot_index)
+	else:
+		print("Normal mode - showing description", slot_data.item.name)
+		SignalHub.emit_item_description(slot_data.item)

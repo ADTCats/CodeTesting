@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://dwhjfd3ij65b7" path="res://Scenes/Inventory/player_inventory.tres" id="2_s1kqi"]
 [ext_resource type="PackedScene" uid="uid://bjup88b1pmfg2" path="res://Scenes/Inventory/inventory_ui_slot.tscn" id="3_or0wv"]
 
-[node name="InventoryUI" type="Control"]
+[node name="InventoryUI" type="Control" groups=["InventoryUI"]]
 process_mode = 3
 z_index = 9
 layout_mode = 3

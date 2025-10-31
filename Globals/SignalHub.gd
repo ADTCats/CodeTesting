@@ -5,7 +5,7 @@ signal on_newspaper_pickup
 signal item_description(item: InvItem)
 signal open_inventory_for_placement(area: InteractableArea)
 signal show_interaction_prompt(text: String)
-signal hide_interaction_prompt()
+signal hide_interaction_prompt
 
 func emit_item_collected(collected_item: InvItem) -> void: 
 	item_collected.emit(collected_item)

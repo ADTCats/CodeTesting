@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdryf82xw8kxy"]
+[gd_scene load_steps=7 format=3 uid="uid://bdryf82xw8kxy"]
 
 [ext_resource type="PackedScene" uid="uid://drs02bjc5fsm" path="res://Scenes/Inventory/inventory_ui.tscn" id="1_2gvj2"]
 [ext_resource type="Script" uid="uid://c52tuu8u2chtj" path="res://Scenes/World/test_bed_world.gd" id="1_apkbi"]
 [ext_resource type="PackedScene" uid="uid://ioefox31oc3q" path="res://Scenes/Character/player.tscn" id="2_a86xc"]
 [ext_resource type="PackedScene" uid="uid://csa1aru81k4ol" path="res://Scenes/Description Cards/newspaper_description.tscn" id="2_fvqs4"]
 [ext_resource type="PackedScene" uid="uid://d1xsvoe13y0" path="res://Scenes/Items/newspaper.tscn" id="4_apkbi"]
+[ext_resource type="PackedScene" uid="uid://bb878x0rdyp3e" path="res://Scenes/Interactable/Desk.tscn" id="6_61xdl"]
 
 [node name="TestBedWorld" type="Node2D"]
 script = ExtResource("1_apkbi")
@@ -22,3 +23,6 @@ position = Vector2(736, 539)
 
 [node name="Newspaper" parent="." instance=ExtResource("4_apkbi")]
 position = Vector2(861, 512)
+
+[node name="Desk" parent="." instance=ExtResource("6_61xdl")]
+position = Vector2(433, 245)

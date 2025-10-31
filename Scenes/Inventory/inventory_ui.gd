@@ -4,10 +4,15 @@ var is_open = false
 var placement_mode = false 
 var current_interactable_area: InteractableArea = null
 
+const GROUP_NAME: String = "InvenotryUI"
+
 @export var inv: Inv
 #@onready var slots: Array = $NinePatchRect/GridContainer
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 @onready var grid_container: GridContainer = $NinePatchRect/GridContainer
+
+func _enter_tree() -> void:
+	add_to_group(GROUP_NAME)
 
 func _ready() -> void:
 	close()
@@ -48,6 +53,8 @@ func update_slots():
 	var slots = grid_container.get_children()
 	for i in range(min(inv.slots.size(), slots.size())):
 		var slot_data = inv.slots[i]
+		var ui_slot = slots[i]
+		ui_slot.slot_index = i
 		if slot_data == null:
 			continue
 		slots[i].update(inv.slots[i])
@@ -58,3 +65,12 @@ func _on_open_for_placement(area: InteractableArea):
 func try_place_item(slot_index: int):
 	if not placement_mode or current_interactable_area == null: 
 		return 
+
+	var slot_data = inv.slots[slot_index]
+	if slot_data == null or slot_data.item == null: 
+		return
+	
+	if current_interactable_area.place_item(slot_data.item):
+		inv.remove_item(slot_index)
+		close()
+	

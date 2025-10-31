@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb878x0rdyp3e"]
+
+[ext_resource type="Texture2D" uid="uid://dwi01a357p8f4" path="res://Assets/shield_gold.png" id="1_fsvp1"]
+[ext_resource type="PackedScene" uid="uid://dguiyw0ml8lme" path="res://Scenes/Interactable/interact_area_test.tscn" id="2_geyjo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fsvp1"]
+size = Vector2(53, 55)
+
+[node name="Desk" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.64, 1.64)
+texture = ExtResource("1_fsvp1")
+
+[node name="InteractComponent" parent="Sprite2D" instance=ExtResource("2_geyjo")]
+scale = Vector2(0.609756, 0.609756)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_fsvp1")

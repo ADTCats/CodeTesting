@@ -28,3 +28,12 @@ func _ensure_slots_initalized():
 		for i in range(18):
 			var slot = InvSlot.new()
 			slots.append(slot)
+
+func remove_item(slot_index: int):
+	if slot_index >= 0 and slot_index < slots.size():
+		if slots[slot_index].amount > 1: 
+			slots[slot_index].amount -= 1
+		else:
+			slots[slot_index].item = null
+			slots[slot_index].amount = 0 
+		update.emit()
