@@ -6,10 +6,11 @@ var current_interactable_area: InteractableArea = null
 
 const GROUP_NAME: String = "InvenotryUI"
 
-@export var inv: Inv
 #@onready var slots: Array = $NinePatchRect/GridContainer
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 @onready var grid_container: GridContainer = $NinePatchRect/GridContainer
+
+@export var inv: Inv = preload("res://Scenes/Inventory/player_inventory.tres")
 
 func _enter_tree() -> void:
 	add_to_group(GROUP_NAME)
@@ -40,7 +41,7 @@ func open_for_placement(area: InteractableArea):
 	get_tree().paused = true
 	self.visible = true
 	is_open = true
-	print("Inventory opene in placement mode for: ", area.area_name)
+	#print("Inventory opene in placement mode for: ", area.area_name)
 
 func close():
 	placement_mode = false
@@ -50,7 +51,7 @@ func close():
 	is_open = false
 
 func update_slots():
-	var slots = grid_container.get_children()
+	#var slots = grid_container.get_children()
 	for i in range(min(inv.slots.size(), slots.size())):
 		var slot_data = inv.slots[i]
 		var ui_slot = slots[i]

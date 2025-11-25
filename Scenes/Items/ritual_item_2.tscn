@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://hc1ud2rh0bcy"]
+
+[ext_resource type="Texture2D" uid="uid://cqsd2unalx67g" path="res://Assets/bullet2.png" id="1_rpbc5"]
+[ext_resource type="Script" uid="uid://kke0yo05l1eo" path="res://Scenes/Items/ritual_item_2.gd" id="1_s21w1"]
+[ext_resource type="Resource" uid="uid://b4rfqa8krlysj" path="res://Scenes/Inventory/Items/RitualItem2.tres" id="2_jrn84"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s21w1"]
+
+[node name="RitualItem2" type="Node2D"]
+script = ExtResource("1_s21w1")
+item = ExtResource("2_jrn84")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rpbc5")
+
+[node name="PickupArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("CircleShape2D_s21w1")
+
+[connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]

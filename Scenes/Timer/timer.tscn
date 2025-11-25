@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckis12nhbo6oe"]
+
+[ext_resource type="Script" uid="uid://dx3pjvkel0ks8" path="res://timer.gd" id="1_sau1q"]
+
+[node name="Timer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sau1q")
+
+[node name="MC" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -71.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+
+[node name="pm10" type="Label" parent="MC"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "10:00 pm"
+horizontal_alignment = 2
+
+[node name="pm11" type="Label" parent="MC"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "11:00 pm"
+horizontal_alignment = 2
+
+[node name="am12" type="Label" parent="MC"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "12:00 am"
+horizontal_alignment = 2
+
+[node name="Timer10" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="Timer11" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="Timer12" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="Timer10" to="." method="_on_timer_10_timeout"]
+[connection signal="timeout" from="Timer11" to="." method="_on_timer_11_timeout"]
+[connection signal="timeout" from="Timer12" to="." method="_on_timer_12_timeout"]

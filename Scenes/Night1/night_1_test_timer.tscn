@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://c247f7po3qfmw"]
+
+[ext_resource type="PackedScene" uid="uid://ckis12nhbo6oe" path="res://Scenes/Timer/timer.tscn" id="1_qu2kf"]
+[ext_resource type="Script" uid="uid://dviytscu4myvo" path="res://Scenes/Night1/night_1_test_timer.gd" id="2_yuhf7"]
+
+[node name="Night1TestTimer" instance=ExtResource("1_qu2kf")]
+script = ExtResource("2_yuhf7")

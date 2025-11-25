@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=3 uid="uid://cd1jsr758ot14"]
+
+[ext_resource type="PackedScene" uid="uid://bdryf82xw8kxy" path="res://Scenes/World/test_bed_world.tscn" id="1_6kp0l"]
+[ext_resource type="PackedScene" uid="uid://dix853btg28dc" path="res://Scenes/Night2/n_ight_2c_s_timer.tscn" id="2_08y63"]
+[ext_resource type="PackedScene" uid="uid://c4chto2fxshv7" path="res://Scenes/Items/ritual_item_4.tscn" id="3_eayfs"]
+[ext_resource type="PackedScene" uid="uid://dh101lsql3xh0" path="res://Scenes/Items/ritual_item_5.tscn" id="4_g5c6v"]
+[ext_resource type="PackedScene" uid="uid://ioefox31oc3q" path="res://Scenes/Character/player.tscn" id="5_erre4"]
+[ext_resource type="PackedScene" uid="uid://dg6lpmld6lkoo" path="res://Scenes/Night2/enemy_night_2.tscn" id="6_6kp0l"]
+
+[node name="Night2C_S" instance=ExtResource("1_6kp0l")]
+
+[node name="NIght2C_STimer" parent="CanvasLayer" index="1" instance=ExtResource("2_08y63")]
+
+[node name="Player" parent="." index="1" instance=ExtResource("5_erre4")]
+position = Vector2(431, 400)
+
+[node name="RitualItem4" parent="ItemHolder" index="0" instance=ExtResource("3_eayfs")]
+position = Vector2(380, 567)
+
+[node name="RitualItem5" parent="ItemHolder" index="1" instance=ExtResource("4_g5c6v")]
+position = Vector2(102, 463)
+
+[node name="EnemyNight2" parent="." index="3" instance=ExtResource("6_6kp0l")]
+position = Vector2(1045, 185)
+rotation = 2.76245

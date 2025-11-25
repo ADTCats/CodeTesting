@@ -3,13 +3,14 @@ extends Resource
 class_name Inv
 
 signal update
+
 @export var slots: Array[InvSlot]
 
 func insert(item: InvItem): 
 	_ensure_slots_initalized()
-	for i in range(min(5, slots.size())):
-		var slot = slots[i]
-	
+	#for i in range(min(5, slots.size())):
+		#var slot = slots[i]
+	#
 	var itemslots = slots.filter(func(slot): return slot != null and slot.item == item)
 	
 	if !itemslots.is_empty():

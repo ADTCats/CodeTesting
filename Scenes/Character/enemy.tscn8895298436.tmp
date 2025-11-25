@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://b516dkhn2qpx"]
+
+[ext_resource type="Script" uid="uid://bwe732det4t7a" path="res://Scenes/Character/enemy.gd" id="1_belnd"]
+[ext_resource type="Texture2D" uid="uid://bbwtqourn62ab" path="res://Assets/survivor1_gun.png" id="2_0ttwl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_belnd"]
+radius = 32.7567
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_belnd")
+
+[node name="Debug" type="Label" parent="."]
+offset_left = -48.0
+offset_top = -106.0
+offset_right = 44.0
+offset_bottom = -83.0
+text = "Placeholder"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_0ttwl")
+
+[node name="PlayerDetect" type="RayCast2D" parent="."]
+target_position = Vector2(138, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_belnd")

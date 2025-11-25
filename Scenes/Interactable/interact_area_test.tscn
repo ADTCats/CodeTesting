@@ -13,6 +13,7 @@ scale = Vector2(1.84814, 1.84814)
 shape = SubResource("CircleShape2D_xxlc1")
 
 [node name="place_text" type="Label" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -29,6 +30,7 @@ text = "Press E (Place Item)"
 [node name="ItemDisplay" type="Sprite2D" parent="."]
 
 [node name="pickup_text" type="Label" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

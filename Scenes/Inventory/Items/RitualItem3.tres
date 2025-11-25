@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://c2duwdfvwvwpe"]
+
+[ext_resource type="Script" uid="uid://c1psghd85guuo" path="res://Scenes/Inventory/inventory_item.gd" id="1_reipo"]
+[ext_resource type="Texture2D" uid="uid://duuw7bphijfqr" path="res://Assets/RitualItem3.png" id="2_3blak"]
+
+[resource]
+script = ExtResource("1_reipo")
+name = "RitualItem3"
+texture = ExtResource("2_3blak")
+description = ""
+is_ritual_item = true
+metadata/_custom_type_script = "uid://c1psghd85guuo"

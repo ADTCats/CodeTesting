@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="CodeTesting"
-run/main_scene="uid://bdryf82xw8kxy"
+run/main_scene="uid://bbuoa7k7057b4"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SignalHub="*res://Globals/SignalHub.gd"
 GameManager="*res://Globals/GameManager.gd"
+ProgressionManager="*res://Globals/ProgressionManager.gd"
 
 [input]
 

@@ -1,16 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://ioefox31oc3q"]
+[gd_scene load_steps=4 format=3 uid="uid://ioefox31oc3q"]
 
 [ext_resource type="Texture2D" uid="uid://bes5vdd0dt21k" path="res://Assets/player-single.png" id="1_bk5kl"]
 [ext_resource type="Script" uid="uid://kdp5je82b277" path="res://Scenes/Character/player.gd" id="1_ojo44"]
-[ext_resource type="Resource" uid="uid://dwhjfd3ij65b7" path="res://Scenes/Inventory/player_inventory.tres" id="2_801yk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_801yk"]
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(3.32, 3.32)
-collision_mask = 3
 script = ExtResource("1_ojo44")
-inventory = ExtResource("2_801yk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_bk5kl")

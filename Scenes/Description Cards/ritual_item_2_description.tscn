@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgfjsafd64wan"]
+
+[ext_resource type="Script" uid="uid://cyb6k3up7nstr" path="res://Scenes/Description Cards/ritual_item_2_description.gd" id="1_h8bld"]
+[ext_resource type="Texture2D" uid="uid://cqsd2unalx67g" path="res://Assets/bullet2.png" id="1_o0q0a"]
+
+[node name="RitualItem2Description" type="Control"]
+process_mode = 3
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h8bld")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.176471, 0, 0.458824)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -191.5
+offset_top = -75.0
+offset_right = 191.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 28
+text = "Ritual Item 2 
+Placeholder
+You picked up a thing!
+
+(Press Space to Dismiss)"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="CenterContainer"]
+scale = Vector2(12.72, 12.72)
+texture = ExtResource("1_o0q0a")

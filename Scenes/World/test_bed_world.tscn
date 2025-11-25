@@ -1,28 +1,38 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdryf82xw8kxy"]
+[gd_scene load_steps=9 format=3 uid="uid://bdryf82xw8kxy"]
 
 [ext_resource type="PackedScene" uid="uid://drs02bjc5fsm" path="res://Scenes/Inventory/inventory_ui.tscn" id="1_2gvj2"]
 [ext_resource type="Script" uid="uid://c52tuu8u2chtj" path="res://Scenes/World/test_bed_world.gd" id="1_apkbi"]
-[ext_resource type="PackedScene" uid="uid://ioefox31oc3q" path="res://Scenes/Character/player.tscn" id="2_a86xc"]
-[ext_resource type="PackedScene" uid="uid://csa1aru81k4ol" path="res://Scenes/Description Cards/newspaper_description.tscn" id="2_fvqs4"]
-[ext_resource type="PackedScene" uid="uid://d1xsvoe13y0" path="res://Scenes/Items/newspaper.tscn" id="4_apkbi"]
-[ext_resource type="PackedScene" uid="uid://bb878x0rdyp3e" path="res://Scenes/Interactable/Desk.tscn" id="6_61xdl"]
+[ext_resource type="PackedScene" uid="uid://csa1aru81k4ol" path="res://Scenes/Description Cards/newspaper_description.tscn" id="3_2iaq0"]
+[ext_resource type="PackedScene" uid="uid://bgfjsafd64wan" path="res://Scenes/Description Cards/ritual_item_2_description.tscn" id="4_dln6b"]
+[ext_resource type="PackedScene" uid="uid://bpn45ua7gtb3v" path="res://Scenes/Description Cards/ritual_item_3_description.tscn" id="5_jh6ok"]
+[ext_resource type="PackedScene" uid="uid://4c0mrh0b4atb" path="res://Scenes/Description Cards/ritual_item_4_description.tscn" id="6_lggq4"]
+[ext_resource type="PackedScene" uid="uid://c55joxn7gba3h" path="res://Scenes/Description Cards/ritual_item_5_description.tscn" id="7_jmh3y"]
+[ext_resource type="PackedScene" uid="uid://bl0bknh6pg8cx" path="res://Scenes/Description Cards/ritual_item_6_description.tscn" id="8_2jaln"]
 
 [node name="TestBedWorld" type="Node2D"]
 script = ExtResource("1_apkbi")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="NewspaperDescription" parent="CanvasLayer" instance=ExtResource("2_fvqs4")]
-visible = false
-
 [node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("1_2gvj2")]
 visible = false
 
-[node name="Player" parent="." instance=ExtResource("2_a86xc")]
-position = Vector2(736, 539)
+[node name="NewspaperDescription" parent="CanvasLayer" instance=ExtResource("3_2iaq0")]
+visible = false
 
-[node name="Newspaper" parent="." instance=ExtResource("4_apkbi")]
-position = Vector2(861, 512)
+[node name="RitualItem2Description" parent="CanvasLayer" instance=ExtResource("4_dln6b")]
+visible = false
 
-[node name="Desk" parent="." instance=ExtResource("6_61xdl")]
-position = Vector2(433, 245)
+[node name="RitualItem3Description" parent="CanvasLayer" instance=ExtResource("5_jh6ok")]
+visible = false
+
+[node name="RitualItem4Description" parent="CanvasLayer" instance=ExtResource("6_lggq4")]
+visible = false
+
+[node name="RitualItem5Description" parent="CanvasLayer" instance=ExtResource("7_jmh3y")]
+visible = false
+
+[node name="RitualItem6Description" parent="CanvasLayer" instance=ExtResource("8_2jaln")]
+visible = false
+
+[node name="ItemHolder" type="Node" parent="."]

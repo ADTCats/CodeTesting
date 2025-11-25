@@ -5,7 +5,7 @@ class_name Player
 var SPEED = 300
 const GROUP_NAME: String = "Player"
 
-@export var inventory: Inv
+@export var inventory: Inv = preload("res://Scenes/Inventory/player_inventory.tres")
 
 func _enter_tree() -> void:
 	add_to_group(GROUP_NAME)

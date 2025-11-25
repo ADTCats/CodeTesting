@@ -3,7 +3,6 @@ extends Node2D
 @export var item: InvItem
 var player = null
 
-
 func _on_pickup_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		SignalHub.emit_item_collected(item)
