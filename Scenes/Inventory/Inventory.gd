@@ -8,20 +8,32 @@ signal update
 
 func insert(item: InvItem): 
 	_ensure_slots_initalized()
-	#for i in range(min(5, slots.size())):
-		#var slot = slots[i]
-	#
-	var itemslots = slots.filter(func(slot): return slot != null and slot.item == item)
 	
-	if !itemslots.is_empty():
-		itemslots[0].amount += 1
-	else: 
-		var emptyslots = slots.filter(func(slot): return slot != null and slot.item == null)
-		
-		if !emptyslots.is_empty():
-			emptyslots[0].item = item
-			emptyslots[0].amount = 1
-	update.emit()
+	if not item.is_ritual_item:
+		for slot in slots:
+			if slot.item == item:
+				slot.amount += 1
+				update.emit()
+				return
+	
+	for slot in slots: 
+		if slot.item == null: 
+			slot.item = item
+			slot.amount = 1
+			update.emit()
+			return
+
+	#var itemslots = slots.filter(func(slot): return slot != null and slot.item == item)
+	#
+	#if !itemslots.is_empty():
+		#itemslots[0].amount += 1
+	#else: 
+		#var emptyslots = slots.filter(func(slot): return slot != null and slot.item == null)
+		#
+		#if !emptyslots.is_empty():
+			#emptyslots[0].item = item
+			#emptyslots[0].amount = 1
+	#update.emit()
 
 func _ensure_slots_initalized():
 	if slots.is_empty() or slots [0] == null: 

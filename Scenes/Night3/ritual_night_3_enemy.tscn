@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dllxfq4iavy7"]
+
+[ext_resource type="PackedScene" uid="uid://b516dkhn2qpx" path="res://Scenes/Character/enemy.tscn" id="1_0cddu"]
+
+[node name="RitualNight3Enemy" instance=ExtResource("1_0cddu")]
+
+[node name="Sprite2D" parent="." index="1"]
+rotation = 3.14159

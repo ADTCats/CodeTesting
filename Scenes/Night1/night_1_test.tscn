@@ -2,23 +2,32 @@
 
 [ext_resource type="PackedScene" uid="uid://bdryf82xw8kxy" path="res://Scenes/World/test_bed_world.tscn" id="1_xalct"]
 [ext_resource type="PackedScene" uid="uid://ioefox31oc3q" path="res://Scenes/Character/player.tscn" id="2_d4jos"]
-[ext_resource type="PackedScene" uid="uid://c247f7po3qfmw" path="res://Scenes/Night1/night_1_test_timer.tscn" id="4_m2ijp"]
-[ext_resource type="PackedScene" uid="uid://dslgpw8tysnwl" path="res://Scenes/Night1/enemy_night_1.tscn" id="8_m2ijp"]
+[ext_resource type="PackedScene" uid="uid://c247f7po3qfmw" path="res://Scenes/Night1/night_1_test_timer.tscn" id="2_jjmxu"]
+[ext_resource type="PackedScene" uid="uid://dslgpw8tysnwl" path="res://Scenes/Night1/enemy_night_1.tscn" id="5_0q7ha"]
 [ext_resource type="PackedScene" uid="uid://d1xsvoe13y0" path="res://Scenes/Items/newspaper.tscn" id="9_wjgfo"]
 [ext_resource type="PackedScene" uid="uid://hc1ud2rh0bcy" path="res://Scenes/Items/ritual_item_2.tscn" id="10_87bq0"]
 
 [node name="Night1Test" instance=ExtResource("1_xalct")]
+script = null
 
-[node name="Night1TestTimer" parent="CanvasLayer" index="1" instance=ExtResource("4_m2ijp")]
+[node name="Night1TestTimer" parent="CanvasLayer" index="7" instance=ExtResource("2_jjmxu")]
 
-[node name="EnemyNight1" parent="." index="1" instance=ExtResource("8_m2ijp")]
-position = Vector2(87, 427)
-
-[node name="Player" parent="." index="2" instance=ExtResource("2_d4jos")]
-position = Vector2(847, 510)
+[node name="Player" parent="." index="1" instance=ExtResource("2_d4jos")]
+position = Vector2(360, 351)
 
 [node name="Newspaper" parent="ItemHolder" index="0" instance=ExtResource("9_wjgfo")]
 position = Vector2(841, 145)
 
 [node name="RitualItem2" parent="ItemHolder" index="1" instance=ExtResource("10_87bq0")]
 position = Vector2(767, 276)
+
+[node name="Label" type="Label" parent="." index="3"]
+offset_left = 33.0
+offset_top = 27.0
+offset_right = 318.0
+offset_bottom = 145.0
+theme_override_font_sizes/font_size = 50
+text = "Night One"
+
+[node name="EnemyNight1" parent="." index="4" instance=ExtResource("5_0q7ha")]
+position = Vector2(1013, 523)

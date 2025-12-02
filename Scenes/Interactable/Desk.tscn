@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bb878x0rdyp3e"]
+[gd_scene load_steps=5 format=3 uid="uid://bb878x0rdyp3e"]
 
 [ext_resource type="Texture2D" uid="uid://dwi01a357p8f4" path="res://Assets/shield_gold.png" id="1_fsvp1"]
 [ext_resource type="PackedScene" uid="uid://dguiyw0ml8lme" path="res://Scenes/Interactable/interact_area_test.tscn" id="2_geyjo"]
+[ext_resource type="Resource" uid="uid://b5ru3thku8gan" path="res://Scenes/Inventory/Items/Newspaper.tres" id="3_geyjo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fsvp1"]
 size = Vector2(53, 55)
@@ -14,7 +15,10 @@ texture = ExtResource("1_fsvp1")
 
 [node name="InteractComponent" parent="Sprite2D" instance=ExtResource("2_geyjo")]
 scale = Vector2(0.609756, 0.609756)
+required_item = ExtResource("3_geyjo")
+is_final_night_area = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_fsvp1")

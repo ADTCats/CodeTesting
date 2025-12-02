@@ -1,0 +1,47 @@
+[gd_scene load_steps=10 format=3 uid="uid://dig3vpfqm8w1r"]
+
+[ext_resource type="PackedScene" uid="uid://dqxucdstrunth" path="res://Scenes/World/ritual_night_base.tscn" id="1_1alv0"]
+[ext_resource type="PackedScene" uid="uid://bm3w3bvgoxcu4" path="res://Scenes/Night4/ritual_night_4_enemy.tscn" id="3_ofgu3"]
+[ext_resource type="PackedScene" uid="uid://bb878x0rdyp3e" path="res://Scenes/Interactable/Desk.tscn" id="3_yqlef"]
+[ext_resource type="PackedScene" uid="uid://fg0q4dk015ql" path="res://Scenes/Interactable/piano.tscn" id="4_8g2ix"]
+[ext_resource type="PackedScene" uid="uid://ddi4wts3rvwti" path="res://Scenes/Interactable/oven.tscn" id="5_2vcma"]
+[ext_resource type="PackedScene" uid="uid://cjvd5cl1cck5g" path="res://Scenes/Interactable/fireplace.tscn" id="6_urrcv"]
+[ext_resource type="PackedScene" uid="uid://doij3j4lg16n4" path="res://Scenes/Interactable/side_table.tscn" id="7_e2bdk"]
+[ext_resource type="PackedScene" uid="uid://6rrmbq25tu6b" path="res://Scenes/Interactable/table.tscn" id="8_yo072"]
+[ext_resource type="PackedScene" uid="uid://ioefox31oc3q" path="res://Scenes/Character/player.tscn" id="10_xd564"]
+
+[node name="RitualNight4" instance=ExtResource("1_1alv0")]
+
+[node name="Desk" parent="ItemHolder" index="0" instance=ExtResource("3_yqlef")]
+position = Vector2(92, 176)
+
+[node name="Piano" parent="ItemHolder" index="1" instance=ExtResource("4_8g2ix")]
+position = Vector2(309, 173)
+scale = Vector2(0.599999, 0.599999)
+
+[node name="Oven" parent="ItemHolder" index="2" instance=ExtResource("5_2vcma")]
+position = Vector2(517, 161)
+
+[node name="Fireplace" parent="ItemHolder" index="3" instance=ExtResource("6_urrcv")]
+position = Vector2(318, 551)
+
+[node name="SideTable" parent="ItemHolder" index="4" instance=ExtResource("7_e2bdk")]
+position = Vector2(512, 558)
+
+[node name="Table" parent="ItemHolder" index="5" instance=ExtResource("8_yo072")]
+position = Vector2(682, 410)
+
+[node name="Label" type="Label" parent="." index="2"]
+offset_left = 33.0
+offset_top = 27.0
+offset_right = 463.0
+offset_bottom = 145.0
+theme_override_font_sizes/font_size = 50
+text = "(Ritual) Night Four!!"
+
+[node name="RitualNight4Enemy" parent="." index="3" instance=ExtResource("3_ofgu3")]
+position = Vector2(1073, 588)
+facing_angle = 270
+
+[node name="Player" parent="." index="4" instance=ExtResource("10_xd564")]
+position = Vector2(101, 555)

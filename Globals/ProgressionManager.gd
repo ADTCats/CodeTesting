@@ -1,17 +1,39 @@
 extends Node
 
-var ritual_items_collected: int = 0 
-var ritual_items_needed: int = 2 
-var current_night: int = 1
-var is_ritual_version: bool = false
+# REMINDER!! 
+# If you need to update which night scene is being loaded in at any given 
+# time YOU HAVE IT STORED HERE!!!! 
+# (Specifically the "load_ritual_night / load_normal_night" sections)
 
 #signal ritual_complete
 #signal player_caught
 #signal timer_expired
 #signal night_progression(condition: String) 
 
+var ritual_items_collected: int = 0 
+var ritual_items_needed: int = 2 
+var current_night: int = 1
+var is_ritual_version: bool = false
+
+var items_placed_correctly: int = 0 
+var items_needed_for_ending: int = 6
+
+
 func _ready() -> void:
 	SignalHub.item_collected.connect(_on_item_collected)
+
+
+
+func item_placed_in_area():
+	items_placed_correctly += 1 
+	print("Items placed: ", items_placed_correctly, "/", items_needed_for_ending)
+	
+	if items_placed_correctly >= items_needed_for_ending:
+		trigger_final_ending()
+
+func trigger_final_ending():
+	print("All items placed! Triggering ending...")
+	get_tree().change_scene_to_file("res://Scenes/EndCards/true_ending_good.tscn")
 
 
 
@@ -69,13 +91,12 @@ func show_ritual_complete_screen():
 	match current_night:
 		1:
 			GameManager.load_night1itemsfound_scene()
-		#2:
-			#GameManager. lbjalbjakbj 
-		#3: 
-			#GameManager. ljaf;lejaofp;eia 
+		2:
+			GameManager.load_night2itemsfound_scene()
+		3: 
+			GameManager.load_night3itemsfound_scene()
 		#4: 
-			#GameManager. claj;oiejafp;eij 
-			#load_ritual_night(current_night + 1)
+			#GameManager.load_goodend_scene()
 
 
 
@@ -85,6 +106,8 @@ func show_caught_screen():
 			GameManager.load_night1caught_scene()
 		2:
 			GameManager.load_night2caught_scene()
+		3:
+			GameManager.load_endcaught_scene()
 
 
 func show_survived_screen():
@@ -93,6 +116,8 @@ func show_survived_screen():
 			GameManager.load_night1survived_scene()
 		2:
 			GameManager.load_night2survived_scene()
+		3: 
+			GameManager.load_endsurvived_scene()
 
 
 #func show_items_screen():
@@ -128,13 +153,8 @@ func load_normal_night(night_num: int):
 			get_tree().change_scene_to_file("res://Scenes/Night1/night_1_test.tscn")
 		2:
 			get_tree().change_scene_to_file("res://Scenes/Night2/night_2_c_s.tscn")
-		#3:
-			#get_tree().change_scene_to_file("res://Scenes/Levels/night_03.tscn")
-		#4:
-			#get_tree().change_scene_to_file("res://Scenes/Levels/night_04.tscn")
-		#_:
-			#print("Game complete!")
-# commenting this section out for now - need to get those built before I can hook them up
+		3:
+			get_tree().change_scene_to_file("res://Scenes/Night3/night_3_c_s.tscn")
 
 
 func load_ritual_night(night_num: int):
@@ -144,16 +164,13 @@ func load_ritual_night(night_num: int):
 	
 	match night_num:
 		1:
-			get_tree().change_scene_to_file("res://Scenes/Night2/night_2_ritual.tscn")
+			get_tree().change_scene_to_file("res://Scenes/Night2/ritual_night_2.tscn")
 		2:
-			get_tree().change_scene_to_file("res://Scenes/Night2/night_2_ritual.tscn")
-		#3:
-			#get_tree().change_scene_to_file("res://Scenes/Levels/ritual_night_03.tscn")
-		#4:
-			#get_tree().change_scene_to_file("res://Scenes/Levels/ritual_night_04.tscn")
-		#_:
-			#print("Ritual path complete!")
-# commenting this section out for now - need to get those built before I can hook them up
+			get_tree().change_scene_to_file("res://Scenes/Night2/ritual_night_2.tscn")
+		3:
+			get_tree().change_scene_to_file("res://Scenes/Night3/ritual_night_3.tscn")
+		4:
+			get_tree().change_scene_to_file("res://Scenes/Night4/ritual_night_4.tscn")
 
 
 

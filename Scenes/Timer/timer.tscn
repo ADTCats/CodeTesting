@@ -46,15 +46,15 @@ text = "12:00 am"
 horizontal_alignment = 2
 
 [node name="Timer10" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
 
 [node name="Timer11" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
 
 [node name="Timer12" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
 
 [connection signal="timeout" from="Timer10" to="." method="_on_timer_10_timeout"]

@@ -15,21 +15,27 @@ func update(slot: InvSlot):
 		item_visual.visible = false
 		return
 	
-	if !slot.item: 
+	if slot.item == null or slot.amount <= 0: 
 		item_visual.visible = false 
-	else:
-		item_visual.visible = true 
-		item_visual.texture = slot.item.texture
+		slot_data = null
+		return
+	
+	item_visual.visible = true 
+	item_visual.texture = slot.item.texture
 
 func _input(event: InputEvent) -> void:
+	if not is_inside_tree():  # Add this check at the top
+		return
+	
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		var mouse_pos = get_global_mouse_position()
 		var rect = get_global_rect()
 		if rect.has_point(mouse_pos):
-			#print("Clicked on slot!")
 			if slot_data != null and slot_data.item != null: 
 				_on_slot_clicked()
-				get_viewport().set_input_as_handled()
+				var viewport = get_viewport()
+				if viewport:
+					viewport.set_input_as_handled()
 
 #func _gui_input(event: InputEvent) -> void:
 	#print("GUI Input received: ", event)
@@ -41,6 +47,9 @@ func _input(event: InputEvent) -> void:
 				#_on_slot_clicked()
 
 func _on_slot_clicked():
+	if not is_inside_tree():
+		return
+	
 	var inventory_ui = get_tree().get_first_node_in_group("InventoryUI")
 	
 	if inventory_ui == null:

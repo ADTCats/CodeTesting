@@ -5,6 +5,7 @@ class_name InteractableArea
 @export var area_name: String = "Interactable Area"
 @export var place_prompt_text: String = "Press E to Place Item"
 @export var pickup_prompt_text: String = "Press E to Pick Up Item"
+@export var is_final_night_area: bool = false
 
 @onready var pickup_text: Label = $pickup_text
 @onready var place_text: Label = $place_text
@@ -78,6 +79,10 @@ func place_item(item: InvItem) -> bool:
 	
 	item_placed.emit(item, self)
 	#print("Item placed:", item.name)
+	
+	if is_final_night_area: 
+		ProgressionManager.item_placed_in_area()
+	
 	if player_in_range:
 		show_appropriate_prompt()
 	return true

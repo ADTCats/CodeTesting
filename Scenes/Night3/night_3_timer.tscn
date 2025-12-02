@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://dew2lw22wywnq"]
+
+[ext_resource type="PackedScene" uid="uid://ckis12nhbo6oe" path="res://Scenes/Timer/timer.tscn" id="1_bnmdx"]
+[ext_resource type="Script" uid="uid://bvv71qqx58es2" path="res://Scenes/Night3/night_3_timer.gd" id="2_8nepy"]
+
+[node name="Night3Timer" instance=ExtResource("1_bnmdx")]
+script = ExtResource("2_8nepy")

@@ -1,15 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://cn53hjlgf71om"]
+[gd_scene load_steps=7 format=3 uid="uid://cn53hjlgf71om"]
 
 [ext_resource type="PackedScene" uid="uid://bdryf82xw8kxy" path="res://Scenes/World/test_bed_world.tscn" id="1_2vd0t"]
 [ext_resource type="PackedScene" uid="uid://cm235udrq3fa8" path="res://Scenes/Night2/night_2_ritual_timer.tscn" id="2_0iwae"]
+[ext_resource type="Script" uid="uid://ba8gkogoptuin" path="res://Archive/night_2_ritual.gd" id="2_0okrv"]
 [ext_resource type="PackedScene" uid="uid://ctit7qtienxwv" path="res://Scenes/Items/ritual_item_3.tscn" id="2_pin6i"]
 [ext_resource type="PackedScene" uid="uid://c4chto2fxshv7" path="res://Scenes/Items/ritual_item_4.tscn" id="3_hahoh"]
 [ext_resource type="PackedScene" uid="uid://ioefox31oc3q" path="res://Scenes/Character/player.tscn" id="4_0iwae"]
 
 [node name="Night2Ritual" instance=ExtResource("1_2vd0t")]
+script = ExtResource("2_0okrv")
 
 [node name="Night2RitualTimer" parent="CanvasLayer" index="1" instance=ExtResource("2_0iwae")]
 visible = false
+
+[node name="RitualItem2Description" parent="CanvasLayer" index="3"]
+visible = true
 
 [node name="RitualItem3" parent="ItemHolder" index="0" instance=ExtResource("2_pin6i")]
 position = Vector2(110, 382)
@@ -21,8 +26,10 @@ position = Vector2(192, 474)
 z_index = 1
 position = Vector2(218, 177)
 
-[node name="ColorRect" type="ColorRect" parent="." index="3"]
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(28.8, 16.2)
-color = Color(0.533333, 0, 0.0313726, 0.364706)
+[node name="Label" type="Label" parent="." index="3"]
+offset_left = 33.0
+offset_top = 27.0
+offset_right = 318.0
+offset_bottom = 145.0
+theme_override_font_sizes/font_size = 50
+text = "(Ritual) Night Two"

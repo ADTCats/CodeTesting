@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://6rrmbq25tu6b"]
+
+[ext_resource type="Texture2D" uid="uid://cvqb01fvseusv" path="res://Assets/Table.png" id="1_iu5v4"]
+[ext_resource type="PackedScene" uid="uid://dguiyw0ml8lme" path="res://Scenes/Interactable/interact_area_test.tscn" id="2_huwbj"]
+[ext_resource type="Resource" uid="uid://dfno8ijhktelp" path="res://Scenes/Inventory/Items/RitualItem6.tres" id="3_iu5v4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y85ya"]
+size = Vector2(53, 55)
+
+[node name="Table" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.64, 1.64)
+texture = ExtResource("1_iu5v4")
+
+[node name="InteractComponent" parent="Sprite2D" instance=ExtResource("2_huwbj")]
+scale = Vector2(0.609756, 0.609756)
+required_item = ExtResource("3_iu5v4")
+is_final_night_area = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_y85ya")

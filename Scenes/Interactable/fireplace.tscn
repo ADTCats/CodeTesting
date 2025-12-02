@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjvd5cl1cck5g"]
+
+[ext_resource type="Texture2D" uid="uid://bje4ymdhyy13o" path="res://Assets/Fireplace.png" id="1_an5qx"]
+[ext_resource type="PackedScene" uid="uid://dguiyw0ml8lme" path="res://Scenes/Interactable/interact_area_test.tscn" id="2_jva12"]
+[ext_resource type="Resource" uid="uid://e1fmwst65ryv" path="res://Scenes/Inventory/Items/RitualItem4.tres" id="3_an5qx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y85ya"]
+size = Vector2(53, 55)
+
+[node name="Fireplace" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.64, 1.64)
+texture = ExtResource("1_an5qx")
+
+[node name="InteractComponent" parent="Sprite2D" instance=ExtResource("2_jva12")]
+scale = Vector2(0.609756, 0.609756)
+required_item = ExtResource("3_an5qx")
+is_final_night_area = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_y85ya")

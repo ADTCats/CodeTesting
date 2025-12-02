@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://25627l54ejj0"]
+[gd_scene load_steps=2 format=3 uid="uid://25627l54ejj0"]
+
+[ext_resource type="Script" uid="uid://cimtvlt0j6ip4" path="res://Scenes/Night2/night_2_survived.gd" id="1_fs0js"]
 
 [node name="Night2Survived" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_fs0js")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqxucdstrunth"]
+
+[ext_resource type="PackedScene" uid="uid://csa1aru81k4ol" path="res://Scenes/Description Cards/newspaper_description.tscn" id="1_80lxq"]
+[ext_resource type="PackedScene" uid="uid://bgfjsafd64wan" path="res://Scenes/Description Cards/ritual_item_2_description.tscn" id="2_v51jc"]
+[ext_resource type="PackedScene" uid="uid://bpn45ua7gtb3v" path="res://Scenes/Description Cards/ritual_item_3_description.tscn" id="3_io031"]
+[ext_resource type="PackedScene" uid="uid://4c0mrh0b4atb" path="res://Scenes/Description Cards/ritual_item_4_description.tscn" id="4_a20go"]
+[ext_resource type="PackedScene" uid="uid://drs02bjc5fsm" path="res://Scenes/Inventory/inventory_ui.tscn" id="6_paqws"]
+
+[node name="RitualNightBase" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="NewspaperDescription" parent="CanvasLayer" instance=ExtResource("1_80lxq")]
+visible = false
+
+[node name="RitualItem2Description" parent="CanvasLayer" instance=ExtResource("2_v51jc")]
+visible = false
+
+[node name="RitualItem3Description" parent="CanvasLayer" instance=ExtResource("3_io031")]
+visible = false
+
+[node name="RitualItem4Description" parent="CanvasLayer" instance=ExtResource("4_a20go")]
+visible = false
+
+[node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("6_paqws")]
+visible = false
+
+[node name="ItemHolder" type="Node" parent="."]

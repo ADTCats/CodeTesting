@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://nwkti6vp2yfl"]
+
+[ext_resource type="PackedScene" uid="uid://dqxucdstrunth" path="res://Scenes/World/ritual_night_base.tscn" id="1_xpkwp"]
+[ext_resource type="PackedScene" uid="uid://cm235udrq3fa8" path="res://Scenes/Night2/night_2_ritual_timer.tscn" id="2_46y5y"]
+[ext_resource type="PackedScene" uid="uid://bqpalevg6e00s" path="res://Scenes/Night2/ritual_night_2_enemy.tscn" id="5_srwdg"]
+[ext_resource type="PackedScene" uid="uid://ioefox31oc3q" path="res://Scenes/Character/player.tscn" id="7_171gs"]
+[ext_resource type="PackedScene" uid="uid://ctit7qtienxwv" path="res://Scenes/Items/ritual_item_3.tscn" id="8_h4h4u"]
+[ext_resource type="PackedScene" uid="uid://c4chto2fxshv7" path="res://Scenes/Items/ritual_item_4.tscn" id="9_klu1v"]
+
+[node name="RitualNight2" instance=ExtResource("1_xpkwp")]
+
+[node name="Night2RitualTimer" parent="CanvasLayer" index="5" instance=ExtResource("2_46y5y")]
+
+[node name="RitualItem4" parent="ItemHolder" index="0" instance=ExtResource("9_klu1v")]
+position = Vector2(243, 526)
+
+[node name="RitualItem3" parent="ItemHolder" index="1" instance=ExtResource("8_h4h4u")]
+position = Vector2(423, 516)
+
+[node name="Player" parent="." index="2" instance=ExtResource("7_171gs")]
+position = Vector2(298, 420)
+
+[node name="Label" type="Label" parent="." index="3"]
+offset_left = 33.0
+offset_top = 27.0
+offset_right = 463.0
+offset_bottom = 145.0
+theme_override_font_sizes/font_size = 50
+text = "(Ritual) Night Two"
+
+[node name="RitualNight2Enemy" parent="." index="4" instance=ExtResource("5_srwdg")]
+position = Vector2(760, 173)
+facing_angle = 90

@@ -31,14 +31,14 @@ func _process(_delta: float) -> void:
 			open()
 
 func open():
-	get_tree().paused = true
+	safe_pause()
 	self.visible = true 
 	is_open = true
 
 func open_for_placement(area: InteractableArea):
 	placement_mode = true 
 	current_interactable_area = area
-	get_tree().paused = true
+	safe_unpause()
 	self.visible = true
 	is_open = true
 	#print("Inventory opene in placement mode for: ", area.area_name)
@@ -46,19 +46,23 @@ func open_for_placement(area: InteractableArea):
 func close():
 	placement_mode = false
 	current_interactable_area = null
-	get_tree().paused = false
+	safe_unpause()
 	visible = false 
 	is_open = false
 
 func update_slots():
+	#print("=== Updating inventory UI slots ===")
 	#var slots = grid_container.get_children()
 	for i in range(min(inv.slots.size(), slots.size())):
 		var slot_data = inv.slots[i]
 		var ui_slot = slots[i]
 		ui_slot.slot_index = i
 		if slot_data == null:
+			#print("Slot ", i, ": null slot_data")
 			continue
+		#print("Slot ", i, ": item = ", slot_data.item, " | amount = ", slot_data.amount if slot_data.item else 0)
 		slots[i].update(inv.slots[i])
+
 
 func _on_open_for_placement(area: InteractableArea):
 	open_for_placement(area)
@@ -74,4 +78,19 @@ func try_place_item(slot_index: int):
 	if current_interactable_area.place_item(slot_data.item):
 		inv.remove_item(slot_index)
 		close()
-	
+
+
+
+func safe_pause():
+	if not is_inside_tree():
+		return
+	var tree = get_tree()
+	if tree:
+		tree.paused = true
+
+func safe_unpause():
+	if not is_inside_tree():
+		return
+	var tree = get_tree()
+	if tree:
+		tree.paused = false
