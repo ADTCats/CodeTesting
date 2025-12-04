@@ -17,11 +17,26 @@ var is_ritual_version: bool = false
 
 var items_placed_correctly: int = 0 
 var items_needed_for_ending: int = 6
+var items_at_night_end: int = 0
 
 
 func _ready() -> void:
 	SignalHub.item_collected.connect(_on_item_collected)
 
+
+func count_ritual_items_in_inventory() -> int: 
+	var player = get_tree().get_first_node_in_group("Player")
+	if player == null: 
+		print("ERROR: Cannot find Player to count inventory items")
+		return 0
+		
+	var count = 0 
+	for slot in player.inventory.slots:
+		if slot != null and slot.item != null and slot.item.is_ritual_item:
+			count += slot.amount
+	
+	print("Items in inventory: ", count)
+	return count
 
 
 func item_placed_in_area():
@@ -31,9 +46,10 @@ func item_placed_in_area():
 	if items_placed_correctly >= items_needed_for_ending:
 		trigger_final_ending()
 
+
 func trigger_final_ending():
 	print("All items placed! Triggering ending...")
-	get_tree().change_scene_to_file("res://Scenes/EndCards/true_ending_good.tscn")
+	get_tree().change_scene_to_file("res://Scenes/EndCards/ritual_ending.tscn")
 
 
 
@@ -60,6 +76,9 @@ func complete_ritual() -> void:
 
 func player_was_caught() -> void:
 	print("Player was caught!")
+	
+	items_at_night_end = count_ritual_items_in_inventory()
+	print("Player caught with ", items_at_night_end, " items")
 	show_caught_screen()
 	
 	#SignalHub.emit_player_caught()
@@ -75,6 +94,9 @@ func player_was_caught() -> void:
 
 func timer_ran_out() -> void: 
 	print("Timer expired - player survived!")
+	
+	items_at_night_end = count_ritual_items_in_inventory()
+	print("Player survived with ", items_at_night_end, " items")
 	show_survived_screen()
 	
 	#if is_ritual_version:
@@ -95,41 +117,58 @@ func show_ritual_complete_screen():
 			GameManager.load_night2itemsfound_scene()
 		3: 
 			GameManager.load_night3itemsfound_scene()
-		#4: 
-			#GameManager.load_goodend_scene()
 
 
 
 func show_caught_screen():
+	var item_count = count_ritual_items_in_inventory()
 	match current_night: 
 		1:
 			GameManager.load_night1caught_scene()
 		2:
 			GameManager.load_night2caught_scene()
-		3:
-			GameManager.load_endcaught_scene()
+		3: 
+			match item_count:
+				0:
+					GameManager.load_good_scene()
+				1: 
+					GameManager.load_neuteral_scene()
+				2:
+					GameManager.load_mid_scene()
+				3: 
+					GameManager.load_notgreat_scene()
+				4:
+					GameManager.load_bad_scene()
+				5:
+					GameManager.load_worst_scene()
 
 
 func show_survived_screen():
+	var item_count = count_ritual_items_in_inventory()
 	match current_night:
 		1: 
 			GameManager.load_night1survived_scene()
 		2:
 			GameManager.load_night2survived_scene()
 		3: 
-			GameManager.load_endsurvived_scene()
-
-
-#func show_items_screen():
-	#match current_night:
-		#1:
-			#GameManager.load_night1itemsfound_scene()
+			match item_count:
+				0:
+					GameManager.load_good_scene()
+				1: 
+					GameManager.load_neuteral_scene()
+				2:
+					GameManager.load_mid_scene()
+				3: 
+					GameManager.load_notgreat_scene()
+				4:
+					GameManager.load_bad_scene()
+				5:
+					GameManager.load_worst_scene()
 
 
 func continue_to_ritual_night():
 	print("Continuing to ritual night ", current_night + 1)
-	load_ritual_night(current_night + 1)
-
+	load_ritual_night(current_night + 1, items_at_night_end)
 
 
 func continue_to_next_night():
@@ -138,12 +177,10 @@ func continue_to_next_night():
 	#if is_ritual_version:
 		#load_ritual_night(current_night + 1)
 	#else: 
-	load_normal_night(current_night + 1)
+	load_normal_night(current_night + 1, items_at_night_end)
 
 
-
-
-func load_normal_night(night_num: int):
+func load_normal_night(night_num: int, item_count: int = 0):
 	current_night = night_num
 	is_ritual_version = false 
 	reset_for_new_night()
@@ -152,12 +189,25 @@ func load_normal_night(night_num: int):
 		1:
 			get_tree().change_scene_to_file("res://Scenes/Night1/night_1_test.tscn")
 		2:
-			get_tree().change_scene_to_file("res://Scenes/Night2/night_2_c_s.tscn")
+			match item_count:
+				0:
+					get_tree().change_scene_to_file("res://Scenes/Night2/ItemNights/night_2_0_items.tscn")
+				1:
+					get_tree().change_scene_to_file("res://Scenes/Night2/ItemNights/night_2_1_item.tscn")
 		3:
-			get_tree().change_scene_to_file("res://Scenes/Night3/night_3_c_s.tscn")
+			match item_count:
+				0:
+					get_tree().change_scene_to_file("res://Scenes/Night3/ItemNights/night_3_0_items.tscn")
+				1: 
+					get_tree().change_scene_to_file("res://Scenes/Night3/ItemNights/night_3_1_item.tscn")
+				2:
+					get_tree().change_scene_to_file("res://Scenes/Night3/ItemNights/night_3_2_items.tscn")
+				3:
+					get_tree().change_scene_to_file("res://Scenes/Night3/ItemNights/night_3_3_items.tscn")
 
 
-func load_ritual_night(night_num: int):
+
+func load_ritual_night(night_num: int, _item_count: int = 0):
 	current_night = night_num
 	is_ritual_version = true
 	reset_for_new_night()
@@ -171,6 +221,7 @@ func load_ritual_night(night_num: int):
 			get_tree().change_scene_to_file("res://Scenes/Night3/ritual_night_3.tscn")
 		4:
 			get_tree().change_scene_to_file("res://Scenes/Night4/ritual_night_4.tscn")
+
 
 
 

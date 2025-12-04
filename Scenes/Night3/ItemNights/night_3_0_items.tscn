@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://vbxc5lcmyook"]
+
+[ext_resource type="PackedScene" uid="uid://bdryf82xw8kxy" path="res://Scenes/World/test_bed_world.tscn" id="1_7tpgr"]
+[ext_resource type="PackedScene" uid="uid://c247f7po3qfmw" path="res://Scenes/Night1/night_1_test_timer.tscn" id="2_7tpgr"]
+[ext_resource type="PackedScene" uid="uid://dh101lsql3xh0" path="res://Scenes/Items/ritual_item_5.tscn" id="3_iiipt"]
+[ext_resource type="PackedScene" uid="uid://c05mxa8717j5e" path="res://Scenes/Items/ritual_item_6.tscn" id="4_xb0a5"]
+[ext_resource type="PackedScene" uid="uid://ioefox31oc3q" path="res://Scenes/Character/player.tscn" id="5_wee0k"]
+[ext_resource type="PackedScene" uid="uid://cy5cneo0pswfq" path="res://Scenes/Night3/enemy_night_3.tscn" id="6_84nyb"]
+
+[node name="Night3_0Items" instance=ExtResource("1_7tpgr")]
+
+[node name="Night1TestTimer" parent="CanvasLayer" index="7" instance=ExtResource("2_7tpgr")]
+
+[node name="RitualItem5" parent="ItemHolder" index="0" instance=ExtResource("3_iiipt")]
+position = Vector2(296, 575)
+
+[node name="RitualItem6" parent="ItemHolder" index="1" instance=ExtResource("4_xb0a5")]
+position = Vector2(84, 532)
+
+[node name="Label" type="Label" parent="." index="2"]
+offset_left = 33.0
+offset_top = 27.0
+offset_right = 318.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color(0.529067, 0.529067, 0.529067, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Night Three 
+(0 Items Found) "
+
+[node name="Player" parent="." index="3" instance=ExtResource("5_wee0k")]
+position = Vector2(555, 479)
+
+[node name="EnemyNight3" parent="." index="4" instance=ExtResource("6_84nyb")]
+position = Vector2(990, 187)
+facing_angle = 90

@@ -1,5 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cm235udrq3fa8"]
+[gd_scene load_steps=3 format=3 uid="uid://cm235udrq3fa8"]
 
 [ext_resource type="PackedScene" uid="uid://ckis12nhbo6oe" path="res://Scenes/Timer/timer.tscn" id="1_3nvwm"]
+[ext_resource type="Script" uid="uid://btshucmup4k37" path="res://Scenes/Night2/night_2_ritual_timer.gd" id="2_aiqu4"]
 
 [node name="Night2RitualTimer" instance=ExtResource("1_3nvwm")]
+script = ExtResource("2_aiqu4")

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c55joxn7gba3h" path="res://Scenes/Description Cards/ritual_item_5_description.tscn" id="2_qjlil"]
 [ext_resource type="PackedScene" uid="uid://c05mxa8717j5e" path="res://Scenes/Items/ritual_item_6.tscn" id="3_es2k4"]
 [ext_resource type="PackedScene" uid="uid://bl0bknh6pg8cx" path="res://Scenes/Description Cards/ritual_item_6_description.tscn" id="3_pt2of"]
-[ext_resource type="PackedScene" uid="uid://dtk1gjxesh8xk" path="res://Scenes/Night3/ritual_night_3_timer.tscn" id="4_pt2of"]
+[ext_resource type="PackedScene" uid="uid://c247f7po3qfmw" path="res://Scenes/Night1/night_1_test_timer.tscn" id="4_7r7mp"]
 [ext_resource type="PackedScene" uid="uid://ioefox31oc3q" path="res://Scenes/Character/player.tscn" id="4_qjlil"]
 [ext_resource type="PackedScene" uid="uid://dllxfq4iavy7" path="res://Scenes/Night3/ritual_night_3_enemy.tscn" id="8_7r7mp"]
 
@@ -17,7 +17,7 @@ visible = false
 [node name="RitualItem6Description" parent="CanvasLayer" index="6" instance=ExtResource("3_pt2of")]
 visible = false
 
-[node name="RitualNight3Timer" parent="CanvasLayer" index="7" instance=ExtResource("4_pt2of")]
+[node name="Night1TestTimer" parent="CanvasLayer" index="7" instance=ExtResource("4_7r7mp")]
 
 [node name="RitualItem5" parent="ItemHolder" index="0" instance=ExtResource("2_inktf")]
 position = Vector2(377, 279)
@@ -30,8 +30,12 @@ offset_left = 33.0
 offset_top = 27.0
 offset_right = 463.0
 offset_bottom = 145.0
+theme_override_colors/font_color = Color(0.886275, 0.827451, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "(Ritual) Night Three"
+text = "Ritual Night Three
+(4 Items)"
 
 [node name="Player" parent="." index="3" instance=ExtResource("4_qjlil")]
 position = Vector2(323, 443)
