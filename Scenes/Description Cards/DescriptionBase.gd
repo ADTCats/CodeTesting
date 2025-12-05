@@ -28,9 +28,9 @@ func _ready() -> void:
 	hide()
 	SignalHub.ritual_complete.connect(_on_ritual_complete)
 
-func _exit_tree():
-	if SignalHub.ritual_complete.is_connected(_on_ritual_complete):
-		SignalHub.ritual_complete.disconnect(_on_ritual_complete)
+#func _exit_tree():
+	#if SignalHub.ritual_complete.is_connected(_on_ritual_complete):
+		#SignalHub.ritual_complete.disconnect(_on_ritual_complete)
 
 
 func _on_item_pickup() -> void: 

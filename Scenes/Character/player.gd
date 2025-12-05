@@ -35,7 +35,7 @@ func _on_item_collected(collected_item: InvItem) -> void:
 	#print("Player: ", get_path())
 	#print("Item: ", collected_item.name if collected_item else "null")
 	#
-	inventory.insert(collected_item)
+	InventoryManager.add_item(collected_item)
 
 func _exit_tree() -> void:
 	if SignalHub.item_collected.is_connected(_on_item_collected):

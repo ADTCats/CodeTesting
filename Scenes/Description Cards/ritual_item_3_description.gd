@@ -13,7 +13,7 @@ func _ready() -> void:
 	SignalHub.ritualitem3_description.connect(_on_ritualitem3_description)
 
 func _exit_tree():
-	super._exit_tree()
+	#super._exit_tree()
 	if SignalHub.on_ritualitem3_pickup.is_connected(_on_ritualitem3_pickup):
 		SignalHub.on_ritualitem3_pickup.disconnect(_on_ritualitem3_pickup)
 	if SignalHub.ritualitem3_description.is_connected(_on_ritualitem3_description):

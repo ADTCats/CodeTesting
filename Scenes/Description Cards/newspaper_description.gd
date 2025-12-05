@@ -14,7 +14,7 @@ func _ready() -> void:
 	SignalHub.newspaper_description.connect(_on_newspaper_description)
 
 func _exit_tree():
-	super._exit_tree() 
+	#super._exit_tree() 
 	if SignalHub.on_newspaper_pickup.is_connected(_on_newspaper_pickup):
 		SignalHub.on_newspaper_pickup.disconnect(_on_newspaper_pickup)
 	if SignalHub.newspaper_description.is_connected(_on_newspaper_description):

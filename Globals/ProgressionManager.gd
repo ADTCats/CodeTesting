@@ -19,23 +19,29 @@ var items_placed_correctly: int = 0
 var items_needed_for_ending: int = 6
 var items_at_night_end: int = 0
 
+var night_ended: bool = false
+
+#@export var slots: Array[InvSlot]
+#var slot_index: int = 0
+#signal update
 
 func _ready() -> void:
 	SignalHub.item_collected.connect(_on_item_collected)
 
 
 func count_ritual_items_in_inventory() -> int: 
-	var player = get_tree().get_first_node_in_group("Player")
-	if player == null: 
-		print("ERROR: Cannot find Player to count inventory items")
+	if not InventoryManager.inventory:
+	#var player = get_tree().get_first_node_in_group("Player")
+	#if player == null: 
+		print("ERROR: InventoryManager not initialized")
 		return 0
 		
 	var count = 0 
-	for slot in player.inventory.slots:
+	for slot in InventoryManager.inventory.slots:
 		if slot != null and slot.item != null and slot.item.is_ritual_item:
 			count += slot.amount
 	
-	print("Items in inventory: ", count)
+	print("Ritual Items in inventory: ", count)
 	return count
 
 
@@ -64,8 +70,18 @@ func _on_item_collected(item: InvItem) -> void:
 
 
 func complete_ritual() -> void: 
+	if night_ended:
+		return
+	night_ended = true
+	
 	print("All ritual items collected! Progressing to next night...")
+	
+	await  get_tree().process_frame
+	
+	items_at_night_end = count_ritual_items_in_inventory()
+	print("Ritual complete with ", items_at_night_end, " items (total in inventory)")
 	SignalHub.emit_ritual_complete()
+	
 	#night_progression.emit("ritual")
 	#show_items_screen()
 	#
@@ -75,6 +91,10 @@ func complete_ritual() -> void:
 
 
 func player_was_caught() -> void:
+	if night_ended:
+		return
+	night_ended = true 
+	
 	print("Player was caught!")
 	
 	items_at_night_end = count_ritual_items_in_inventory()
@@ -93,6 +113,10 @@ func player_was_caught() -> void:
 
 
 func timer_ran_out() -> void: 
+	if night_ended:
+		return
+	night_ended = true 
+	
 	print("Timer expired - player survived!")
 	
 	items_at_night_end = count_ritual_items_in_inventory()
@@ -109,24 +133,46 @@ func timer_ran_out() -> void:
 
 func show_ritual_complete_screen():
 	print("Showing ritual complete card for night ", current_night)
-	
+	var item_count = items_at_night_end
 	match current_night:
 		1:
-			GameManager.load_night1itemsfound_scene()
+			match item_count:
+				2:
+					GameManager.load_night1itemsfound_scene()
 		2:
-			GameManager.load_night2itemsfound_scene()
+			match item_count:
+				4:
+					GameManager.load_night2itemsfound_scene()
 		3: 
-			GameManager.load_night3itemsfound_scene()
+			match item_count:
+				0:
+					GameManager.load_good_scene()
+				1: 
+					GameManager.load_neuteral_scene()
+				2:
+					GameManager.load_mid_scene()
+				3: 
+					GameManager.load_notgreat_scene()
+				4:
+					GameManager.load_bad_scene()
+				5:
+					GameManager.load_worst_scene() 
+				6:
+					GameManager.load_night3itemsfound_scene()
 
 
 
 func show_caught_screen():
-	var item_count = count_ritual_items_in_inventory()
+	var item_count = items_at_night_end
 	match current_night: 
 		1:
-			GameManager.load_night1caught_scene()
+			match item_count: 
+				0, 1:
+					GameManager.load_night1caught_scene()
 		2:
-			GameManager.load_night2caught_scene()
+			match item_count: 
+				0, 1, 2, 3:
+					GameManager.load_night2caught_scene()
 		3: 
 			match item_count:
 				0:
@@ -144,12 +190,16 @@ func show_caught_screen():
 
 
 func show_survived_screen():
-	var item_count = count_ritual_items_in_inventory()
+	var item_count = items_at_night_end
 	match current_night:
 		1: 
-			GameManager.load_night1survived_scene()
+			match item_count:
+				0, 1: 
+					GameManager.load_night1survived_scene()
 		2:
-			GameManager.load_night2survived_scene()
+			match item_count:
+				0, 1, 2, 3:
+					GameManager.load_night2survived_scene()
 		3: 
 			match item_count:
 				0:
@@ -182,7 +232,7 @@ func continue_to_next_night():
 
 func load_normal_night(night_num: int, item_count: int = 0):
 	current_night = night_num
-	is_ritual_version = false 
+	#is_ritual_version = false 
 	reset_for_new_night()
 	
 	match night_num:
@@ -209,7 +259,7 @@ func load_normal_night(night_num: int, item_count: int = 0):
 
 func load_ritual_night(night_num: int, _item_count: int = 0):
 	current_night = night_num
-	is_ritual_version = true
+	#is_ritual_version = true
 	reset_for_new_night()
 	
 	match night_num:
@@ -224,11 +274,30 @@ func load_ritual_night(night_num: int, _item_count: int = 0):
 
 
 
-
 func reset_for_new_night() -> void: 
 	ritual_items_collected = 0
+	night_ended = false
+
+
 
 func start_new_game():
+	#is_ritual_version = false
 	current_night = 1
-	is_ritual_version = false
-	load_normal_night(1)
+	ritual_items_collected = 0
+	ritual_items_needed = 2
+	items_placed_correctly = 0
+	items_at_night_end = 0
+	night_ended = false
+	
+	InventoryManager.clear_inventory()
+	GameManager.load_newgame_scene()
+
+
+#func reset_inventory(slots: int):
+	#if slot_index >= 0 and slot_index < slots.amount():
+		#if slots[slot_index].amount > 1: 
+			#slots[slot_index].amount -= 1
+		#else:
+			#slots[slot_index].item = null
+			#slots[slot_index].amount = 0 
+		#update.emit()

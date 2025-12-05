@@ -4,23 +4,24 @@ var is_open = false
 var placement_mode = false 
 var current_interactable_area: InteractableArea = null
 
-const GROUP_NAME: String = "InvenotryUI"
+const GROUP_NAME: String = "InventoryUI"
 
 #@onready var slots: Array = $NinePatchRect/GridContainer
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 @onready var grid_container: GridContainer = $NinePatchRect/GridContainer
 
-@export var inv: Inv = preload("res://Scenes/Inventory/player_inventory.tres")
+#@export var inv: Inv = preload("res://Scenes/Inventory/player_inventory.tres")
 
 func _enter_tree() -> void:
 	add_to_group(GROUP_NAME)
+	InventoryManager.inventory_ui = self
 
 func _ready() -> void:
 	close()
-	if inv:
-		inv.update.connect(update_slots)
+	if InventoryManager.inventory:
+		InventoryManager.inventory.update.connect(update_slots)
 		update_slots()
-		SignalHub.open_inventory_for_placement.connect(_on_open_for_placement)
+	SignalHub.open_inventory_for_placement.connect(_on_open_for_placement)
 
 
 func _process(_delta: float) -> void:
@@ -53,6 +54,7 @@ func close():
 func update_slots():
 	#print("=== Updating inventory UI slots ===")
 	#var slots = grid_container.get_children()
+	var inv = InventoryManager.inventory
 	for i in range(min(inv.slots.size(), slots.size())):
 		var slot_data = inv.slots[i]
 		var ui_slot = slots[i]
@@ -70,13 +72,14 @@ func _on_open_for_placement(area: InteractableArea):
 func try_place_item(slot_index: int):
 	if not placement_mode or current_interactable_area == null: 
 		return 
-
+	
+	var inv = InventoryManager.inventory
 	var slot_data = inv.slots[slot_index]
 	if slot_data == null or slot_data.item == null: 
 		return
 	
 	if current_interactable_area.place_item(slot_data.item):
-		inv.remove_item(slot_index)
+		InventoryManager.remove_item(slot_index)
 		close()
 
 

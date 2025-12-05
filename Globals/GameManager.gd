@@ -5,6 +5,9 @@ extends Node
 #func load_NEWSPAPER() -> void: 
 	#get_tree().change_scene_to_packed(NEWSPAPER)
 
+const NEWGAME = preload("res://Scenes/Night1/night_1_test.tscn")
+const MAINMENU = preload("res://Scenes/EndCards/main_menu.tscn")
+
 const NIGHT1CAUGHT = preload("res://Scenes/Night1/night_1_caught.tscn")
 const NIGHT1SURVIVED = preload("res://Scenes/Night1/night_1_survived.tscn")
 
@@ -30,6 +33,14 @@ const NOTGREAT = preload("res://Scenes/EndCards/3_items_ending.tscn")
 const BAD = preload("res://Scenes/EndCards/4_items_ending.tscn")
 const WORST = preload("res://Scenes/EndCards/5_items_ending.tscn")
 const TRUE = preload("res://Scenes/EndCards/ritual_ending.tscn")
+
+
+func load_newgame_scene() -> void:
+	get_tree().change_scene_to_packed(NEWGAME)
+
+
+func load_mainmenu_scene() -> void: 
+	get_tree().change_scene_to_packed(MAINMENU)
 
 
 
